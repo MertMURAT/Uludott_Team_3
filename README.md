@@ -1,9 +1,2 @@
-,,# Uludott_Team_3
+# Uludott_Team_3
 
-MERT
-ege
-aslkfsdfjahdsf
-sdkfasdfkas
-
-
-alperen
