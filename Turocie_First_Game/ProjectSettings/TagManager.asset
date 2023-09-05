@@ -3,18 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Boy
+  - Doctor
+  - Block
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - CharacterEye
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Character
+  - Ground
+  - BoyCharacter
+  - Block
   - 
   - 
   - 
