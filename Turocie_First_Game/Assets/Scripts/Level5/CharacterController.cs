@@ -9,6 +9,8 @@ public class CharacterController : MonoBehaviour
     Transform trf;
     [SerializeField] float _speed = 200f;
     [SerializeField] float JumpModifier = 25f;
+    public KeyInventory KeyInv;
+
     public float Speed
     {
         get { return _speed; }
@@ -20,7 +22,9 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         trf = transform;
-        rbody = GetComponent<Rigidbody2D>(); 
+        rbody = GetComponent<Rigidbody2D>();
+        KeyInv = new KeyInventory(this.gameObject);
+
     }
 
     void CharacterMovement() {
@@ -37,6 +41,7 @@ public class CharacterController : MonoBehaviour
         
 
     }
+
 
     public void Kill()
     {

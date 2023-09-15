@@ -8,6 +8,7 @@ TagManager:
   - ZombieConstraints-GoRight
   - ZombieConstraints-JumpToGoRight
   - ZombieConstraints-JumpToGoLeft
+  - Box
   layers:
   - Default
   - TransparentFX
