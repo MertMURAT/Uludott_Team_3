@@ -30,4 +30,11 @@ public class SerialazibleDictionary<TKey , TValue> : Dictionary<TKey, TValue>, I
         for (int i = 0; i < keys.Count; i += 1) this.Add(keys[i], values[i]);
     }
 
+    public  TValue ElementAt(int index)
+    {
+        return values[index];
+    }
+
+    public TKey GetKey(int index) { return keys[index]; }
+
 }

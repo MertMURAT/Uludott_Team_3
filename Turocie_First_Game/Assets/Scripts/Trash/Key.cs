@@ -10,7 +10,8 @@ public class Key : MonoBehaviour , IDataPersistence
     [Header("Configurations for saving system")]
     public bool isCollected = false;
     public bool isInInventory = false;
-    [SerializeField] string _id;
+    public bool isUsed = false;
+    [SerializeField] public string _id;
     [SerializeField] GameObject Character;
 
     [Header("Animation Settings")]
@@ -30,30 +31,12 @@ public class Key : MonoBehaviour , IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.isKeyCollected.TryGetValue(_id, out isCollected);
-        data.isKeyInKeyInventory.TryGetValue(_id, out isInInventory);
-        if (isInInventory)
-        {
-            GameObject keyInv = Character.transform.GetChildByName("KeyInventory");
-            transform.parent = keyInv.transform;
 
-            Sequence keyAnim = DOTween.Sequence();
-            keyAnim.Append(transform.DOLocalMove(Vector3.zero + (keyInv.transform.childCount - 1) * KeyOffset, MoveDuration).SetEase(Ease.InOutExpo));
-            keyAnim.Join(transform.DORotate(new Vector3(0f, 0f, RotationAmount), RotateDuration));
-
-        }
-        else if (isCollected)
-            Destroy(this.gameObject);
         
     }
 
     public void SaveData(GameData data)
     {
-        if (data.isKeyCollected.ContainsKey(_id)) data.isKeyCollected.Remove(_id);
-        if (data.isKeyInKeyInventory.ContainsKey(_id)) data.isKeyInKeyInventory.Remove(_id);
-
-        data.isKeyCollected.Add(_id, isCollected);
-        data.isKeyInKeyInventory.Add(_id, isInInventory);
 
     }
 
@@ -70,7 +53,7 @@ public class Key : MonoBehaviour , IDataPersistence
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Character"))
+        if(collision && collision.gameObject  && collision.gameObject.layer == LayerMask.NameToLayer("Character"))
         {
             isCollected = true;
             isInInventory = true;

@@ -22,9 +22,10 @@ public class FileHandler
         this.useEncryption = isEncryptionOn;
     }
 
-    public GameData Load() 
+    public GameData Load(string profileID) 
     {
-        string fullPath = Path.Combine(dataFileName , dataPirPath);
+        string fullPath = Path.Combine(dataFileName ,profileID, dataPirPath);
+        Debug.Log(profileID +"  ///////  "+ fullPath);
         GameData LoadedData = null;
 
         if (File.Exists(fullPath))
@@ -62,9 +63,9 @@ public class FileHandler
 
     }
 
-    public void Save(GameData data)
+    public void Save(string profileID , GameData data)
     {
-        string fullPath = Path.Combine(dataFileName , dataPirPath);
+        string fullPath = Path.Combine(dataFileName , profileID , dataPirPath);
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
@@ -92,6 +93,30 @@ public class FileHandler
         {
             Debug.LogError("Error occured when trying to save the file : " + fullPath + "\n" + e.Message );
         }
+    }
+
+
+    public Dictionary<string , GameData> LoadAllProfile()
+    {
+        Dictionary<string, GameData> profileDirectory = new Dictionary<string, GameData>();
+
+        IEnumerable<DirectoryInfo> dirInfo = new DirectoryInfo(Path.Combine(dataPirPath, dataFileName)).EnumerateDirectories();
+        foreach(DirectoryInfo info in dirInfo)
+        {
+            string profileID = info.Name;
+            string fullPath = Path.Combine(dataPirPath, profileID, dataFileName);
+
+            if (!File.Exists(fullPath)) Debug.LogWarning("Skipping directory when loading all profiles because it does not contain data");
+
+            GameData profileData = Load(profileID);
+            if (profileData != null)
+            {
+                profileDirectory.Add(profileID, profileData);
+            }
+            else Debug.LogError("Tried to load profile but something went wrong. ProfileID : " + profileID);
+        }
+
+        return profileDirectory;
     }
 
     public string EncryptDecrypt(string data) // XOR Encryption

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class CharacterController : MonoBehaviour , IDataPersistence
 {
 
     Rigidbody2D rbody;
@@ -15,6 +15,18 @@ public class CharacterController : MonoBehaviour
     {
         get { return _speed; }
         set { _speed = value; }
+    }
+
+
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+    }
+
+    public void SaveData(GameData data)
+    {
+        //data.isLevelCompleted = true;
+        data.playerPosition = this.transform.position;
     }
 
 
@@ -41,6 +53,8 @@ public class CharacterController : MonoBehaviour
         
 
     }
+
+    
 
 
     public void Kill()

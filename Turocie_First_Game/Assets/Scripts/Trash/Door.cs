@@ -11,6 +11,7 @@ public class Door : MonoBehaviour , IDataPersistence
 
     [Header("Door-Key System")]
     public List<GameObject> KeyGroup;
+    public SerialazibleDictionary<string, bool> id2key;
     [SerializeField] bool _isGoalCompleted = false;
     [SerializeField] Transform _detectionBox;
     public Vector2 DetectionBoxSize = new Vector2(1f, 1f);
@@ -44,6 +45,17 @@ public class Door : MonoBehaviour , IDataPersistence
     }
 
 
+    [ContextMenu("Generate ID2Key")]
+    void GenerateID2Key()
+    {
+        foreach(GameObject keyObj in KeyGroup)
+        {
+            Key keyComp = keyObj.GetComponent<Key>();
+            id2key.Add(keyComp._id , false);
+        }
+    }
+
+
     void Start()
     {
         _doorBody = transform.Find("DoorBody").transform;
@@ -54,21 +66,22 @@ public class Door : MonoBehaviour , IDataPersistence
 
 
         if (!_isOpened) _doorBody.RotateAround(_colon.position, _colon.up , openAngle);
-        if (_isGoalCompleted) KeyGroup.Clear();
+        //if (_isGoalCompleted) KeyGroup.Clear();
+
+
+
+
     }
 
     public void LoadData(GameData data)
     {
-        data.isDoorGoalCompleted.TryGetValue(_id, out _isGoalCompleted);
+
     }
 
     public void SaveData(GameData data)
     {
-        if (data.isDoorGoalCompleted.ContainsKey(_id))
-        {
-            data.isDoorGoalCompleted.Remove(_id);
-        }
-        data.isDoorGoalCompleted.Add(_id, _isGoalCompleted);
+        
+        
     }
 
 
@@ -112,27 +125,6 @@ public class Door : MonoBehaviour , IDataPersistence
 
     bool Check4Keys(CharacterController character)
     {
-
-        if (KeyGroup.Count == 0 || _isGoalCompleted) return true;
-        for(int i = 0; i < KeyGroup.Count; i += 1)
-            character.KeyInv.FindAndUseKey(KeyGroup[i] , (GameObject goalKey)=> {
-                goalKey.GetComponent<Key>().isInInventory = false;
-                KeyGroup.RemoveAt(i); 
-                Destroy(goalKey); 
-            });
-
-        if(KeyGroup.Count == 0)
-        {
-            _isGoalCompleted = true;
-            return true;
-        }
-
-
-        /*
-        foreach(GameObject key in KeyGroup)
-            if (!character.KeyInv.FindKey(key)) return false;
-        _isGoalCompleted = true;
-        */
         return false;
     }
 
@@ -147,6 +139,8 @@ public class Door : MonoBehaviour , IDataPersistence
                 isInteractionAvalible = true;
             else isInteractionAvalible = false;   
         }
+
+        if (KeyGroup.Count == 0) _isGoalCompleted = true;
         
     }
 

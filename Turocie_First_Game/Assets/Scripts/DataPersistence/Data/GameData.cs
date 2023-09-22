@@ -8,21 +8,28 @@ public class GameData
 {
 
     public int DeathCount;
-    public SerialazibleDictionary<string , bool> isDoorGoalCompleted;
-    public SerialazibleDictionary<string, bool> isKeyCollected;
-    public SerialazibleDictionary<string, bool> isKeyInKeyInventory;
+    public bool isLevelCompleted;
+    public SerialazibleDictionary<string, bool> isDoorPlusGoalCompleted;
+    public SerialazibleDictionary<string, int> keyPlusStates;
+
+
+    public Vector3 playerPosition;
+
+
 
 
     public GameData()
     {
         this.DeathCount = 0;
-        this.isDoorGoalCompleted = new SerialazibleDictionary<string, bool>();
-        this.isKeyCollected = new SerialazibleDictionary<string, bool>();
-        this.isKeyInKeyInventory = new SerialazibleDictionary<string, bool>();
+        this.isLevelCompleted = false;
+        this.isDoorPlusGoalCompleted = new SerialazibleDictionary<string, bool>();
+        this.keyPlusStates = new SerialazibleDictionary<string, int>();
+        this.playerPosition = Vector3.zero;
 
 
-        //this.isDoorOpened = new List<bool>();
+
     }
+
 
 
 }
