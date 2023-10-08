@@ -32,7 +32,7 @@ public class GameUIController : MonoBehaviour
     public void OnLevelButtonClick(string levelName)
     {
         DataPersistenceManager._instance._selectedProfileID = levelName;
-        DataPersistenceManager._instance.SaveGame();
+        //DataPersistenceManager._instance.SaveGame();
         SceneManager.LoadSceneAsync(levelName);
     }
 

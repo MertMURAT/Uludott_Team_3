@@ -51,7 +51,9 @@ public class Diken : MonoBehaviour
 
     void OnCharacterDetection(Collider2D coll)
     {
-        coll.GetComponent<CharacterController>().Kill();
+        GameOverController goController;
+        if (coll.TryGetComponent(out goController)) goController.GameOver();
+        
         transform.DOPunchScale(_punchForce, _punchEffDuration ,_vibaration , _elasticity);
         
     }

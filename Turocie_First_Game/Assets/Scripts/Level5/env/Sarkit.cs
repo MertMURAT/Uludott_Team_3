@@ -11,13 +11,16 @@ public class Sarkit : MonoBehaviour
     private float _distanceX = 0f;
     private float _roadDuration = 4f;
     private float _vibarationDuration = 4f;
+    
+
+    
 
     public float DistanceX { get { return _distanceX; } set { _distanceX = value; } }
     public float DistanceY { get { return _distanceY; } set { _distanceY = value; } }
     public float RoadDuration { get { return _roadDuration; } set { _roadDuration = value; } }
     public float VibarationDuration { get { return _vibarationDuration; } set { _vibarationDuration = value; } }
 
-
+    [SerializeField]
     LayerMask CharacterLayer;
     float y0;
     bool isFallingDown = false;
@@ -26,7 +29,6 @@ public class Sarkit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CharacterLayer = LayerMask.GetMask("Character");
         y0 = transform.position.y;
     }
 
@@ -54,8 +56,8 @@ public class Sarkit : MonoBehaviour
     {
         //Debug.Log(" " + collision.gameObject.layer + "   //   " + CharacterLayer.value);
         if (collision.gameObject.layer == LayerMask.NameToLayer("Character")) {
-            //Debug.Log("Hi");
-            collision.gameObject.GetComponent<CharacterController>().Kill();
+           
+            collision.gameObject.GetComponent<GameOverController>().GameOver();
         }
     }
 

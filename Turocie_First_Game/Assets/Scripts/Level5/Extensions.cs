@@ -93,6 +93,20 @@ public static class Extensions
 
     }
 
+    public static void DetectionBoxByLayer(this GameObject _detectionBox, Vector2 BoxSize, LayerMask layer, System.Action<Collider2D> OnDetection)
+    {
+        Collider2D[] colls = Physics2D.OverlapBoxAll(
+            new Vector2(_detectionBox.transform.position.x, _detectionBox.transform.position.y),
+            BoxSize,
+            0f,
+            layer
+         ) ;
+
+        foreach (var coll in colls) OnDetection(coll);
+
+    }
+
+
     public static void DetectionBox(this GameObject _detectionBox, Vector2 BoxSize, System.Action<Collider2D> OnDetection)
     {
         Collider2D[] colls = Physics2D.OverlapBoxAll(

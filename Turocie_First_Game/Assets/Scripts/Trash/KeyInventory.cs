@@ -3,29 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class KeyInventory
+public class KeyInventory : MonoBehaviour
 {
+    [SerializeField] GameObject _girl;
+    [SerializeField] GameObject _doctor;
+    [SerializeField] bool _isInvOnDoctor = true;
 
-    GameObject _keyInventory;
-    public KeyInventory(GameObject Character)
+    BoyMovementController _girlScript;
+    PlayerMovementController _doctorScript;
+
+    [Header("Animation Settings")]
+    [SerializeField] bool _isAnimationEnabled;
+    [SerializeField] float _floatingDuration;
+    [SerializeField] Ease _easeType;
+
+    [Header("Local Offset")]
+    [SerializeField] Vector3 localOffset;
+
+   
+
+    private void Awake()
     {
-        this._keyInventory = Character.GetComponent<Transform>().GetChildByName("KeyInventory");
+        if (
+            _girl == null ||
+            _doctor == null ||
+            !_girl.TryGetComponent<BoyMovementController>(out _girlScript) ||
+            !_doctor.TryGetComponent<PlayerMovementController>(out _doctorScript)
+          )
+            Debug.LogError("KeyInventory Script couldnt initialized properly.");
+
+
+        localOffset = this.transform.localPosition;
     }
 
-    public bool FindKey(GameObject key)
-    {
-        return this._keyInventory.IsChildIn(key);
-    }
 
-    public bool FindAndUseKey(GameObject goalkey , System.Action<GameObject> Use)
+
+    private void FixedUpdate()
     {
-        GameObject foundKey = this._keyInventory.GetIdenticalChild(goalkey);
-        if(foundKey != null)
+        if ( _girlScript && _girlScript.enabled && _isInvOnDoctor)
         {
-            Use(goalkey);
-            return true;
+            this.transform.parent = _girl.transform;
+            if (_isAnimationEnabled)
+                this.transform.DOLocalMove(Vector3.zero + localOffset, _floatingDuration).SetEase(_easeType);
+            _isInvOnDoctor = false;
         }
-        return false;
+        else if ( _doctorScript && _doctorScript.enabled && !_isInvOnDoctor)
+        {
+            this.transform.parent = _doctor.transform;
+            if (_isAnimationEnabled)
+                this.transform.DOLocalMove(Vector3.zero + localOffset, _floatingDuration).SetEase(_easeType);
+            _isInvOnDoctor = true;
+        }
     }
+
 
 }

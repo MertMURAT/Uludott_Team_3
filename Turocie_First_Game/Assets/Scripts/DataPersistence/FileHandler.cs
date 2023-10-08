@@ -106,7 +106,7 @@ public class FileHandler
             string profileID = info.Name;
             string fullPath = Path.Combine(dataPirPath, profileID, dataFileName);
 
-            if (!File.Exists(fullPath)) Debug.LogWarning("Skipping directory when loading all profiles because it does not contain data");
+            if (!File.Exists(fullPath)) Debug.LogWarning("Skipping the /// "+ fullPath+ " /// directory when loading all profiles because it does not contain data");
 
             GameData profileData = Load(profileID);
             if (profileData != null)

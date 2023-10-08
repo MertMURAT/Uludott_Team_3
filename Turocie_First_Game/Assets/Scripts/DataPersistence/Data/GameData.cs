@@ -11,6 +11,7 @@ public class GameData
     public bool isLevelCompleted;
     public SerialazibleDictionary<string, bool> isDoorPlusGoalCompleted;
     public SerialazibleDictionary<string, int> keyPlusStates;
+    public SerialazibleDictionary<string, bool> isCheckPointAlreadyUsed;
 
 
     public Vector3 playerPosition;
@@ -24,6 +25,7 @@ public class GameData
         this.isLevelCompleted = false;
         this.isDoorPlusGoalCompleted = new SerialazibleDictionary<string, bool>();
         this.keyPlusStates = new SerialazibleDictionary<string, int>();
+        this.isCheckPointAlreadyUsed = new SerialazibleDictionary<string, bool>();
         this.playerPosition = Vector3.zero;
 
 

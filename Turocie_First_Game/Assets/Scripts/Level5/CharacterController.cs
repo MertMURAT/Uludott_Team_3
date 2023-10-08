@@ -9,7 +9,7 @@ public class CharacterController : MonoBehaviour , IDataPersistence
     Transform trf;
     [SerializeField] float _speed = 200f;
     [SerializeField] float JumpModifier = 25f;
-    public KeyInventory KeyInv;
+
 
     public float Speed
     {
@@ -23,10 +23,11 @@ public class CharacterController : MonoBehaviour , IDataPersistence
         this.transform.position = data.playerPosition;
     }
 
+
     public void SaveData(GameData data)
     {
         //data.isLevelCompleted = true;
-        data.playerPosition = this.transform.position;
+        //data.playerPosition = this.transform.position;
     }
 
 
@@ -35,7 +36,7 @@ public class CharacterController : MonoBehaviour , IDataPersistence
     {
         trf = transform;
         rbody = GetComponent<Rigidbody2D>();
-        KeyInv = new KeyInventory(this.gameObject);
+
 
     }
 

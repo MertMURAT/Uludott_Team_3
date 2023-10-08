@@ -36,13 +36,11 @@ public class DataPersistenceManager : MonoBehaviour
         // sceneLoaded will start after the `OnEnable()` method and before the `Start()` method
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-
+        //DataPersistenceManager._instance.LoadGame();
         if(_checkPointSaveCoroutine != null)
                 StopCoroutine(CheckPointSave());
-
-        DataPersistenceManager._instance.LoadGame();
-
-        //_checkPointSaveCoroutine = StartCoroutine(CheckPointSave());
+        _checkPointSaveCoroutine = StartCoroutine(CheckPointSave());
+        
 
     }
 
@@ -54,7 +52,9 @@ public class DataPersistenceManager : MonoBehaviour
     public void OnSceneLoaded(Scene scene , LoadSceneMode mode)
     {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        //LoadGame();
+        if(DataPersistenceManager._instance._selectedProfileID != null && DataPersistenceManager._instance._selectedProfileID.Length != 0 ) 
+            DataPersistenceManager._instance.LoadGame();
     }
 
 
@@ -71,22 +71,11 @@ public class DataPersistenceManager : MonoBehaviour
         this.fdataHandler = new FileHandler(Application.persistentDataPath, FileName, useEncryption);
     }
 
-    /*
-    private void Start()
-    {
-        // moved to Awake()
-        this.fdataHandler = new FileHandler(Application.persistentDataPath, FileName , useEncryption); 
 
-        
-        // Moved to OnSceneLoaded
-        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
-    }
-    */
 
     public void NewGame()
     {
-        this.gameData = new GameData();
+        if(DataPersistenceManager._instance._selectedProfileID != null) this.gameData = new GameData();
     }
     public void LoadGame()
     {
@@ -97,9 +86,11 @@ public class DataPersistenceManager : MonoBehaviour
         // 1. Read the compressed file by using filehandler 
         // create a new GameData if no data file found 
 
+        if (DataPersistenceManager._instance._selectedProfileID == null) return;
+
         if (this.gameData == null && initializeDataIfNull)
         {
-            Debug.LogWarning("No GameData was found. New Game Data must be initialized through 'NewGame' option");
+            Debug.LogWarning("No GameData with the ///"+ DataPersistenceManager._instance._selectedProfileID+"/// profileID was found. New Game Data must be initialized through 'NewGame' option");
             NewGame();
         }
 
@@ -112,7 +103,7 @@ public class DataPersistenceManager : MonoBehaviour
         // 2. initialise GameData() based on the data that comes from the filehandler.
         foreach(IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.LoadData(gameData);
+            if(dataPersistenceObj != null) dataPersistenceObj.LoadData(gameData);
         }
 
     }
@@ -129,11 +120,12 @@ public class DataPersistenceManager : MonoBehaviour
         // 1. Read the GameData Script
         foreach (IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
-            dataPersistenceObj.SaveData(gameData);
+            if(dataPersistenceObj != null) dataPersistenceObj.SaveData(gameData);
         }
 
         // 2. Convert GameData Script into a compressed file format
-        fdataHandler.Save(DataPersistenceManager._instance._selectedProfileID , gameData);
+        if(DataPersistenceManager._instance._selectedProfileID != null) 
+            fdataHandler.Save(DataPersistenceManager._instance._selectedProfileID , this.gameData);
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
@@ -145,7 +137,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        //SaveGame();
         
     }
 
