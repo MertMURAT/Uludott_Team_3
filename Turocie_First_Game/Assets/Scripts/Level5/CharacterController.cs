@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class CharacterController : MonoBehaviour , IDataPersistence
 {
 
     Rigidbody2D rbody;
     Transform trf;
     [SerializeField] float _speed = 200f;
     [SerializeField] float JumpModifier = 25f;
+
+
     public float Speed
     {
         get { return _speed; }
@@ -16,11 +18,26 @@ public class CharacterController : MonoBehaviour
     }
 
 
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+    }
+
+
+    public void SaveData(GameData data)
+    {
+        //data.isLevelCompleted = true;
+        //data.playerPosition = this.transform.position;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
         trf = transform;
-        rbody = GetComponent<Rigidbody2D>(); 
+        rbody = GetComponent<Rigidbody2D>();
+
+
     }
 
     void CharacterMovement() {
@@ -37,6 +54,9 @@ public class CharacterController : MonoBehaviour
         
 
     }
+
+    
+
 
     public void Kill()
     {
