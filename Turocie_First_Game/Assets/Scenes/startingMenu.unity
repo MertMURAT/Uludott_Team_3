@@ -325,6 +325,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnLevelButtonClick
       objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "B\xF6l\xFCm3"
+      objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1670,6 +1674,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 685614935}
     m_Modifications:
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 372368912}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLevelButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameUIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "B\xF6l\xFCm4"
+      objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2137,7 +2161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: anotherLevel
+      value: "B\xF6l\xFCm2"
       objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
@@ -2904,6 +2928,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 685614935}
     m_Modifications:
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 372368912}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLevelButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "B\xF6l\xFCm8"
+      objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3199,6 +3235,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 685614935}
     m_Modifications:
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 372368912}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLevelButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "B\xF6l\xFCm10"
+      objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3372,6 +3420,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 685614935}
     m_Modifications:
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 372368912}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLevelButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "B\xF6l\xFCm9"
+      objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3469,6 +3529,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 685614935}
     m_Modifications:
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 372368912}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLevelButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "B\xF6l\xFCm7"
+      objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3576,6 +3648,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 685614935}
     m_Modifications:
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 372368912}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLevelButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "B\xF6l\xFCm6"
+      objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3699,7 +3783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level5Test
+      value: "B\xF6l\xFCm5"
       objectReference: {fileID: 0}
     - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3945,6 +4029,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 372368912}
+    - target: {fileID: 3628159589932622644, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: "B\xF6l\xFCm1"
+      objectReference: {fileID: 0}
     - target: {fileID: 3803668667497005680, guid: 2abd6b62094ff774cbb6711103046604, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

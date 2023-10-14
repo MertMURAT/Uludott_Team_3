@@ -8,4 +8,34 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CharacterTestScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm1.unity"
+    guid: b3cb9aea316dbf24f88ed67b1c34dcd0
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm2.unity"
+    guid: 8aa6ee9094fb42949ae5f8b8067ee1d6
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm3.unity"
+    guid: 2f60288b793c8434f9f9866a44d0ad69
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm4.unity"
+    guid: 80809d6219eefe147afd75f03186b67c
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm5.unity"
+    guid: 5b8c040a30670ae4fa114680cedd6ed1
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm6.unity"
+    guid: e4c9090efcb147f43b9ff2c30bbaf0f2
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm7.unity"
+    guid: c1c774295ee4a7946ada28d2e2a274f8
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm8.unity"
+    guid: 8c48b89ab532a864e9681d5508134d9f
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm9.unity"
+    guid: e20025a1f1b946c45b742242f7995a93
+  - enabled: 1
+    path: "Assets/Scenes/B\xF6l\xFCm10.unity"
+    guid: 5747e55b8ec0fc94089e631031137094
   m_configObjects: {}
