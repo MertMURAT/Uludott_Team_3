@@ -14,6 +14,7 @@ public class LadderMovement : MonoBehaviour
     
    
    [SerializeField] private Rigidbody2D rb;
+   [SerializeField] private Rigidbody2D rb2;
  
  
 

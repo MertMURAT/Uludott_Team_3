@@ -91,7 +91,7 @@ public class Platform90deg : MonoBehaviour
         IsWithinDetectionRange = false;
         _detectionBox.DetectionBox(BoxSize,_detectionBox.transform.eulerAngles.z , (Collider2D coll) =>
         {
-            if (coll.gameObject.CompareTag("Box"))
+            if (coll.gameObject.CompareTag("grabbable"))
             {
                 IsWithinDetectionRange = true;
                 RotateAnim();
