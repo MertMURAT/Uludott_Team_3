@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+
 
 public class Platform : MonoBehaviour
 {
@@ -8,93 +11,72 @@ public class Platform : MonoBehaviour
     [SerializeField]
     public Transform posA, posB;
 
-    [SerializeField]
-    public float Speed;
 
-    [Header("DetectionBox Settings")]
-    [SerializeField] GameObject _detectionBox;
-    [SerializeField] Vector3 _detectionBoxSize;
-    public bool isInteractionAvalible = false;
+
+    [Header("Settings")]
+    public float Time = 0;
+    public Vector2 d = Vector2.zero;
+    public float ForceConstant;
+    public Vector2 direction = Vector2.one;
+    public ForceMode2D fmode;
+    public bool ApplyRelativeForceOnYAxis = false;
+    
+
+
+
 
 
     Vector3 targetPos;
+    Rigidbody2D rb;
+    float _angle;
+
 
     // Start is called before the first frame update
     void Start()
     {
         targetPos = posB.position;
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        d = new Vector2(Mathf.Abs(posA.position.x - posB.position.x), Mathf.Abs(posA.position.y - posB.position.y));
+        _angle = Mathf.Atan2(d.y, d.x) * Mathf.Rad2Deg;
+
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
+
+
         if (Vector2.Distance(transform.position, posA.position) < 0.1f) targetPos = posB.position;
         if (Vector2.Distance(transform.position, posB.position) < 0.1f) targetPos = posA.position;
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPos , Speed ); 
+
+        //transform.position = Vector3.MoveTowards(transform.position, targetPos, Speed * Time.deltaTime);
+        
 
     }
 
     private void FixedUpdate()
     {
-        Collider2D[] colls = Physics2D.OverlapBoxAll(
-            _detectionBox.transform.position, 
-            _detectionBoxSize , 
-            _detectionBox.transform.localEulerAngles.z
-        );
-
-        isInteractionAvalible = false;
-        foreach(Collider2D coll in colls)
-        {
-            if(coll != null)
-            {
-                isInteractionAvalible = true;
-                Rigidbody2D rb;
-                if(coll.TryGetComponent(out rb))
-                {
-                    var direction = Vector3.zero;
-                    if (Vector3.Distance(transform.position, targetPos) > 1f)
-                    {
-                        direction = targetPos - transform.position;
-                        coll.transform.parent.transform.parent = this.gameObject.transform;
-                    }
-
-                }
-            }
-        }
+        direction.x = (targetPos.x < transform.position.x) ? -1 : 1;
+        direction.y = (targetPos.y < transform.position.y) ? -1 : 1;
+        rb.velocity = direction * new Vector2(d.x / Time, d.y / Time);
     }
 
-    private void OnDrawGizmos()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-
-        if(_detectionBox != null && _detectionBoxSize != null)
+        
+        
+        if(collision.gameObject.layer != LayerMask.NameToLayer("Ground") && collision.gameObject.layer != LayerMask.NameToLayer("Wall"))
         {
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawWireCube(_detectionBox.transform.position, _detectionBoxSize);
-
+            if (ApplyRelativeForceOnYAxis)
+                collision.attachedRigidbody.AddForce(ForceConstant*(1/Time) * direction * new Vector2(Mathf.Cos(_angle), Mathf.Sin(_angle)), fmode);
+            else 
+                collision.attachedRigidbody.AddForce(ForceConstant *(1/Time) * direction * new Vector2(Mathf.Cos(_angle), 0f ), fmode);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
