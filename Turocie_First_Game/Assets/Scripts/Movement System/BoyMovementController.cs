@@ -41,15 +41,48 @@ public class BoyMovementController : MonoBehaviour
 
      [SerializeField] private TrailRenderer tr;
 
+    [Header("AUDIO SYSTEM")]
+    [SerializeField] AudioSource _mainAudioSource;
+    [SerializeField] AudioClip _walkingSound;
+    [SerializeField] AudioClip _jumpingSound;
 
-     private Animator animator;
+
+    private Animator animator;
 
    
    void Start()
    {
        animator = GetComponent<Animator>();
+       StartCoroutine(WalkingSoundCoroutine());
    }
-    
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+
+
+    IEnumerator WalkingSoundCoroutine()
+    {
+        while (this.isActiveAndEnabled)
+        {
+            yield return new WaitUntil(() => { return (horizontal != 0 && isGrounded()); });
+            if (!_mainAudioSource.isPlaying) _mainAudioSource.PlayOneShot(_walkingSound);
+
+        }
+    }
+
+    void PlayJumpingSound()
+    {
+        if (_mainAudioSource.isPlaying)
+        {
+            _mainAudioSource.Stop();
+            _mainAudioSource.PlayOneShot(_jumpingSound);
+        }
+        else _mainAudioSource.PlayOneShot(_jumpingSound);
+    }
+
     void Update()
     {
         if(isDashing)
@@ -64,6 +97,7 @@ public class BoyMovementController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W) && isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            PlayJumpingSound();
             
         }
         if(Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0f)

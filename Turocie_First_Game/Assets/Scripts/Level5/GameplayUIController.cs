@@ -8,6 +8,7 @@ public class GameplayUIController : MonoBehaviour
 {
 
     [SerializeField] GameObject _gameOverPanel;
+    [SerializeField] GameObject _optionsCanvas;
     [SerializeField] Selectable[] _buttons;
 
 
@@ -27,6 +28,11 @@ public class GameplayUIController : MonoBehaviour
     {
         _gameOverPanel.SetActive(true); 
         foreach( Selectable button in _buttons) button.interactable = true;
+    }
+
+    public void SwitchOptionsCanvas(bool isOpened)
+    {
+        _optionsCanvas.SetActive(isOpened);
     }
 
     public void OnRetryButtonClicked()

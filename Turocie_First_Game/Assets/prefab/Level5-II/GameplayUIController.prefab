@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverPanel: {fileID: 0}
+  _optionsCanvas: {fileID: 0}
   _buttons:
   - {fileID: 0}
   - {fileID: 0}
